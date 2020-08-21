@@ -1,30 +1,30 @@
 const db = require('../config/connection')
 const Sequelize = require('sequelize');
 
-const Users = db.define('user', {
-    idUser: {
+const Movies = db.define('movies', {
+    idMovie: {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
     },
-    fullName: {
+    title: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    userName: {
+    year: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    genre: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    email: {
+    description: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    password: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    address: {
+    url_trailer: {
         type: Sequelize.STRING,
         allowNull: false
     }
@@ -32,6 +32,4 @@ const Users = db.define('user', {
     // options
 });
 
-
-
-module.exports = Users;
+module.exports = Movies;

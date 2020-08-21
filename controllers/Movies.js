@@ -1,14 +1,14 @@
-const User = require('../models/User')
+const Movies = require('../models/Movies')
 
 module.exports = {
     // fungsi CRUD
-    getAll: (req, res) => {
-        User.findAll({
+    getAllMovies: (req, res) => {
+        Movies.findAll({
             raw: true
         })
         .then(result => {
             res.send({
-                message: 'Get All data',
+                message: 'Get All Movies',
                 status: 200,
                 result
             })
@@ -21,11 +21,11 @@ module.exports = {
             })
         })
     },
-    createUser: (req, res) => {
-        User.create(req.body)
+    addMovie: (req, res) => {
+        Movies.create(req.body)
         .then(result => {
             res.send({
-                message: "Create One user success",
+                message: "Create One Movie success",
                 status: 201,
                 result
             })
@@ -38,15 +38,15 @@ module.exports = {
             })
         })
     },
-    updateProfile: async (req, res) => {
-        await User.update(req.body, {
+    updateMovie: async (req, res) => {
+        await Movies.update(req.body, {
             where: {
-                idUser: req.params.id
+                idMovie: req.params.id
             }
         })
         .then(result => {
-            res.send({
-                message: 'Profile Updated',
+            res.send ({
+                message: 'Movie Updated',
                 status: 201,
                 result
             })
@@ -59,15 +59,15 @@ module.exports = {
             })
         })
     },
-    deleteProfile: async (req, res) => {
-        await User.destroy({
+    deleteMovie: async (req, res) => {
+        await Movies.destroy({
             where: {
-                idUser: req.params.id
+                idMovie: req.params.id
             }
         })
         .then(result => {
-            res.send({
-                message: 'Delete Succesfully',
+            res.send ({
+                message: 'Deleted Succesfully',
                 status: 201,
                 result
             })
@@ -75,8 +75,8 @@ module.exports = {
         .catch(error => {
             console.log(error)
             res.send({
-                message:'Internal Server Error',
-                status:500
+                message: 'Internal Server Error',
+                status: 500
             })
         })
     }
